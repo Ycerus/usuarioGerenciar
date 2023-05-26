@@ -1,4 +1,5 @@
 package gerenciamentousuarios;
+
 /**
  *
  * @author WTNUNES
@@ -10,18 +11,19 @@ public class Pessoa {
     protected String senha;
     protected String email;
     protected String cpf;
+    protected Endereco endereco;
 
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String login, String senha, String email, String cpf) {
+    public Pessoa(String nome, String login, String senha, String email, String cpf, Endereco endereco) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
         this.email = email;
         this.cpf = cpf;
+        this.endereco = endereco;
     }
-     
 
     @Override
     public String toString() {
@@ -66,6 +68,14 @@ public class Pessoa {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
 }
