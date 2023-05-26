@@ -1,37 +1,33 @@
-package gerenciamentousuarios;
+package Model;
 
+import Model.Pessoa;
+import Model.Endereco;
 import java.util.Date;
 
 /**
  *
  * @author WTNUNES
  */
-public class Gerente extends Pessoa {
+public class Vendedor extends Pessoa {
 
     protected String ctps;
     protected Date dataAdmissao;
     protected Integer salario;
-    protected String departamento;
-    protected Integer bonus;
 
-    public Gerente() {
+    public Vendedor() {
     }
 
-    public Gerente(String ctps, Date dataAdmissao, Integer salario, String departamento, Integer bonus) {
+    public Vendedor(String ctps, Date dataAdmissao, Integer salario) {
         this.ctps = ctps;
         this.dataAdmissao = dataAdmissao;
         this.salario = salario;
-        this.departamento = departamento;
-        this.bonus = bonus;
     }
 
-    public Gerente(String ctps, Date dataAdmissao, Integer salario, String departamento, Integer bonus, String nome, String login, String senha, String email, String cpf, Endereco endereco) {
+    public Vendedor(String ctps, Date dataAdmissao, Integer salario, String nome, String login, String senha, String email, String cpf, Endereco endereco) {
         super(nome, login, senha, email, cpf, endereco);
         this.ctps = ctps;
         this.dataAdmissao = dataAdmissao;
         this.salario = salario;
-        this.departamento = departamento;
-        this.bonus = bonus;
     }
 
     public String getCtps() {
@@ -58,20 +54,12 @@ public class Gerente extends Pessoa {
         this.salario = salario;
     }
 
-    public String getDepartamento() {
-        return departamento;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
-
-    public Integer getBonus() {
-        return bonus;
-    }
-
-    public void setBonus(Integer bonus) {
-        this.bonus = bonus;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public String getNome() {
@@ -112,14 +100,6 @@ public class Gerente extends Pessoa {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
 
 }

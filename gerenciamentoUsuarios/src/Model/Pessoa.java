@@ -1,4 +1,6 @@
-package gerenciamentousuarios;
+package Model;
+
+import Model.Endereco;
 
 /**
  *

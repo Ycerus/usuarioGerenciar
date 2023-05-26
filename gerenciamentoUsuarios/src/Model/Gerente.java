@@ -1,31 +1,38 @@
-package gerenciamentousuarios;
+package Model;
 
+import Model.Endereco;
 import java.util.Date;
 
 /**
  *
  * @author WTNUNES
  */
-public class Vendedor extends Pessoa {
+public class Gerente extends Pessoa {
 
     protected String ctps;
     protected Date dataAdmissao;
-    protected Integer salario;
+    protected Double salario;
+    protected String departamento;
+    protected Integer bonus;
 
-    public Vendedor() {
+    public Gerente() {
     }
 
-    public Vendedor(String ctps, Date dataAdmissao, Integer salario) {
+    public Gerente(String ctps, Date dataAdmissao, Double salario, String departamento, Integer bonus) {
         this.ctps = ctps;
         this.dataAdmissao = dataAdmissao;
         this.salario = salario;
+        this.departamento = departamento;
+        this.bonus = bonus;
     }
 
-    public Vendedor(String ctps, Date dataAdmissao, Integer salario, String nome, String login, String senha, String email, String cpf, Endereco endereco) {
+    public Gerente(String ctps, Date dataAdmissao, Double salario, String departamento, Integer bonus, String nome, String login, String senha, String email, String cpf, Endereco endereco) {
         super(nome, login, senha, email, cpf, endereco);
         this.ctps = ctps;
         this.dataAdmissao = dataAdmissao;
         this.salario = salario;
+        this.departamento = departamento;
+        this.bonus = bonus;
     }
 
     public String getCtps() {
@@ -44,20 +51,28 @@ public class Vendedor extends Pessoa {
         this.dataAdmissao = dataAdmissao;
     }
 
-    public Integer getSalario() {
+    public Double getSalario() {
         return salario;
     }
 
-    public void setSalario(Integer salario) {
+    public void setSalario(Double salario) {
         this.salario = salario;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getDepartamento() {
+        return departamento;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public Integer getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(Integer bonus) {
+        this.bonus = bonus;
     }
 
     public String getNome() {
@@ -98,6 +113,14 @@ public class Vendedor extends Pessoa {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
 }
