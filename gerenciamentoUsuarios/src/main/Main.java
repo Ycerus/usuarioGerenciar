@@ -16,12 +16,12 @@ import java.util.Scanner;
  * @author WTNUNES
  */
 public class Main {
-    
+
     static List<Cliente> clientes = new ArrayList();
     static List<Vendedor> vendedores = new ArrayList();
     static List<Gerente> gerentes = new ArrayList();
-    static Service service;
-    
+    static Service service = new Service();
+
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -30,11 +30,12 @@ public class Main {
         do {
             System.out.println("-------Menu de ações-------\n"
                     + " 1 - Cadastrar Cliente       \n"
-                    + " 2 - Cadastrar Vendedor       \n"
-                    + " 3 - Editar Gerente          \n"
-                    + " 4 - Listar Clientes          \n"
+                    + " 2 - Cadastrar Vendedor      \n"
+                    + " 3 - Cadastrar Gerente          \n"
+                    + " 4 - Listar Clientes         \n"
                     + " 5 - Listar Vendedores       \n"
-                    + " 6 - Listar Gerentes       \n");
+                    + " 6 - Listar Gerentes         \n"
+                    + " 0 - Sair                    \n");
 
             System.out.println("Selecione uma ação:");
             valor = scan.nextInt();
@@ -42,17 +43,32 @@ public class Main {
                 case 1:
                     Cliente c = new Cliente();
                     c = service.cadastroCliente();
-                    clientes.add(c);
+                    if (clientes.add(c)) {
+                        System.out.println("Cliente cadastrado com Sucesso!");
+                    }
                     break;
                 case 2:
+                    Vendedor v = new Vendedor();
+                    v = service.cadastroVendedor();
+                    if (vendedores.add(v)) {
+                        System.out.println("Vendedor cadastrado com Sucesso!");
+                    }
                     break;
                 case 3:
+                    Gerente g = new Gerente();
+                    g = service.cadastroGerente();
+                    if (gerentes.add(g)) {
+                        System.out.println("Gerente cadastrado com Sucesso!");
+                    }
                     break;
                 case 4:
+                    Listar(clientes);
                     break;
                 case 5:
+                    Listar(vendedores);
                     break;
                 case 6:
+                    Listar(gerentes);
                     break;
                 default:
                     break;
@@ -60,7 +76,15 @@ public class Main {
 
         } while (valor != 0);
     }
-    
-    
-    
+
+    static public void Listar(List pessoas) {
+
+        if (pessoas.isEmpty()) {
+            System.out.println("Não há nenhum registro!!");
+        } else {
+            pessoas.forEach(p -> {
+                System.out.println(p.toString());
+            });
+        }
+    }
 }

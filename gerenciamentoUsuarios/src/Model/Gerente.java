@@ -1,7 +1,7 @@
 package Model;
 
-import Model.Endereco;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -10,15 +10,15 @@ import java.util.Date;
 public class Gerente extends Pessoa {
 
     protected String ctps;
-    protected Date dataAdmissao;
+    protected LocalDate dataAdmissao;
     protected Double salario;
     protected String departamento;
-    protected Integer bonus;
+    protected Double bonus;
 
     public Gerente() {
     }
 
-    public Gerente(String ctps, Date dataAdmissao, Double salario, String departamento, Integer bonus) {
+    public Gerente(String ctps, LocalDate dataAdmissao, Double salario, String departamento, Double bonus) {
         this.ctps = ctps;
         this.dataAdmissao = dataAdmissao;
         this.salario = salario;
@@ -26,13 +26,33 @@ public class Gerente extends Pessoa {
         this.bonus = bonus;
     }
 
-    public Gerente(String ctps, Date dataAdmissao, Double salario, String departamento, Integer bonus, String nome, String login, String senha, String email, String cpf, Endereco endereco) {
+    public Gerente(String ctps, LocalDate dataAdmissao, Double salario, String departamento, Double bonus, String nome, String login, String senha, String email, String cpf, Endereco endereco) {
         super(nome, login, senha, email, cpf, endereco);
         this.ctps = ctps;
         this.dataAdmissao = dataAdmissao;
         this.salario = salario;
         this.departamento = departamento;
         this.bonus = bonus;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        return "Gerente : "
+                + "nome='" + nome + '\''
+                + ", login='" + login + '\''
+                + ", senha='" + senha + '\''
+                + ", email='" + email + '\''
+                + ", cpf='" + cpf + '\''
+                + ", ctps='" + ctps + '\''
+                + ", dataAdmissao=" + dataAdmissao.format(formatter)
+                + ", salario=" + salario
+                + ", bonus=" + bonus
+                + ", departamento =" + departamento
+                + ", cidade='" + endereco.cidade + '\''
+                + ", rua='" + endereco.rua + '\''
+                + ", numero=" + endereco.numero;
     }
 
     public String getCtps() {
@@ -43,11 +63,11 @@ public class Gerente extends Pessoa {
         this.ctps = ctps;
     }
 
-    public Date getDataAdmissao() {
+    public LocalDate getDataAdmissao() {
         return dataAdmissao;
     }
 
-    public void setDataAdmissao(Date dataAdmissao) {
+    public void setDataAdmissao(LocalDate dataAdmissao) {
         this.dataAdmissao = dataAdmissao;
     }
 
@@ -67,11 +87,11 @@ public class Gerente extends Pessoa {
         this.departamento = departamento;
     }
 
-    public Integer getBonus() {
+    public Double getBonus() {
         return bonus;
     }
 
-    public void setBonus(Integer bonus) {
+    public void setBonus(Double bonus) {
         this.bonus = bonus;
     }
 

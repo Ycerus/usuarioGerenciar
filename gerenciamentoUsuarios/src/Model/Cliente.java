@@ -7,6 +7,7 @@ package Model;
 public class Cliente extends Pessoa {
 
     protected Integer limiteCredito;
+    protected Endereco endereco;
 
     public Cliente() {
     }
@@ -18,6 +19,20 @@ public class Cliente extends Pessoa {
     public Cliente(Integer limiteCredito, String nome, String login, String senha, String email, String cpf, Endereco endereco) {
         super(nome, login, senha, email, cpf, endereco);
         this.limiteCredito = limiteCredito;
+    }
+
+      @Override
+    public String toString() {
+        return "Cliente : " +
+                "nome='" + nome + '\'' +
+                ", login='" + login + '\'' +
+                ", senha='" + senha + '\'' +
+                ", email='" + email + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", limiteCredito=" + limiteCredito +
+                ", cidade='" + endereco.cidade + '\'' +
+                ", rua='" + endereco.rua + '\'' +
+                ", numero=" + endereco.numero;
     }
 
     public Integer getLimiteCredito() {
@@ -75,5 +90,5 @@ public class Cliente extends Pessoa {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
 }

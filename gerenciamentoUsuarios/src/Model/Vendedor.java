@@ -2,7 +2,8 @@ package Model;
 
 import Model.Pessoa;
 import Model.Endereco;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -11,23 +12,42 @@ import java.util.Date;
 public class Vendedor extends Pessoa {
 
     protected String ctps;
-    protected Date dataAdmissao;
-    protected Integer salario;
+    protected LocalDate dataAdmissao;
+    protected Double salario;
+    protected Endereco endereco;
 
     public Vendedor() {
     }
 
-    public Vendedor(String ctps, Date dataAdmissao, Integer salario) {
+    public Vendedor(String ctps, LocalDate dataAdmissao, Double salario) {
         this.ctps = ctps;
         this.dataAdmissao = dataAdmissao;
         this.salario = salario;
     }
 
-    public Vendedor(String ctps, Date dataAdmissao, Integer salario, String nome, String login, String senha, String email, String cpf, Endereco endereco) {
+    public Vendedor(String ctps, LocalDate dataAdmissao, Double salario, String nome, String login, String senha, String email, String cpf, Endereco endereco) {
         super(nome, login, senha, email, cpf, endereco);
         this.ctps = ctps;
         this.dataAdmissao = dataAdmissao;
         this.salario = salario;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        return "Vendedor : "
+                + "nome='" + nome + '\''
+                + ", login='" + login + '\''
+                + ", senha='" + senha + '\''
+                + ", email='" + email + '\''
+                + ", cpf='" + cpf + '\''
+                + ", ctps='" + ctps + '\''
+                + ", dataAdmissao=" + dataAdmissao.format(formatter)
+                + ", salario=" + salario
+                + ", cidade='" + endereco.cidade + '\''
+                + ", rua='" + endereco.rua + '\''
+                + ", numero=" + endereco.numero;
     }
 
     public String getCtps() {
@@ -38,19 +58,19 @@ public class Vendedor extends Pessoa {
         this.ctps = ctps;
     }
 
-    public Date getDataAdmissao() {
+    public LocalDate getDataAdmissao() {
         return dataAdmissao;
     }
 
-    public void setDataAdmissao(Date dataAdmissao) {
+    public void setDataAdmissao(LocalDate dataAdmissao) {
         this.dataAdmissao = dataAdmissao;
     }
 
-    public Integer getSalario() {
+    public Double getSalario() {
         return salario;
     }
 
-    public void setSalario(Integer salario) {
+    public void setSalario(Double salario) {
         this.salario = salario;
     }
 
